@@ -3,6 +3,10 @@
 <div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question"
      id="zh-single-question-page" data-urltoken="36301524" role="main">
     <div class="zu-main-content">
+        <div class="avatar_user_imag">
+            <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{user.id}">
+                <img src=$!{question.userImga} class="zm-item-img-avatar"></a>
+        </div>
         <div class="zu-main-content-inner">
             <meta itemprop="isTopQuestion" content="false">
             <meta itemprop="visitsCount" content="402">
@@ -69,7 +73,7 @@
 
                     <div class="zm-votebar goog-scrollfloater js-vote" data-id="$!{comment.comment.id}">
                         #if($comment.liked > 0)
-                        <button class="up js-like pressed" title="赞同">
+                        <button class="up js-like pressed" title="赞同"/>
                         #else
                         <button class="up js-like" title="赞同">
                         #end
@@ -79,7 +83,7 @@
                         </button>
 
                         #if($comment.liked < 0)
-                        <button class="down js-dislike pressed" title="反对，不会显示你的姓名">
+                        <button class="down js-dislike pressed" title="反对，不会显示你的姓名"/>
                         #else
                         <button class="down js-dislike" title="反对，不会显示你的姓名">
                         #end
@@ -110,9 +114,11 @@
                         <div class="zm-meta-panel">
                             <a itemprop="url" class="answer-data-link meta-item" target="_blank" href="">发布于 $data.format('yyyy-MM-dd HH:mm:ss', $comment.comment.createdDate)</a>
                             <a href="" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
-                                <i class="z-icon-comment"></i></a>
-
-                            <button class="item-collapse js-collapse" style="transition: none;">
+                                <i class="z-icon-comment" id="z-icon-comment"></i></a>
+                            <div class="zm-editable-editor-field-wrap_content" id="zm-editable-editor-field-wrap_content">
+                                <textarea name="content" id="content_" class="zm-editable-editor-field-element editable" style="width:100%;"></textarea>
+                            </div>
+                            <button class="item-collapse js-collapse" >
                                 <i class="z-icon-fold"></i>收起</button>
                         </div>
                     </div>
@@ -145,3 +151,10 @@
 #parse("js.html")
 <script type="text/javascript" src="/scripts/main/site/detail.js"></script>
 #parse("footer.html")
+<script>
+    var content = document.getElementById("z-icon-comment");
+
+    content.onclick = function () {
+        zdocument.getElementById("m-editable-editor-field-wrap_content").style.display="block";
+    }
+</script>
