@@ -58,7 +58,7 @@ public class FeedController {
                     Question question = questionService.getById(Integer.parseInt(feed.get("questionId")));
                     vo.set("commentCount",question.getCommentCount());
                     vo.set("content",question.getContent());
-                    vo.set("followed",followService.isFollower(hostHolder.getUser().getId(), EntityType.ENTITY_QUESTION, question.getId()));
+                    vo.set("followed",followService.isFollower(localUserId, EntityType.ENTITY_QUESTION, question.getId()));
                     vo.set("followCount", followService.getFollowerCount(EntityType.ENTITY_QUESTION, question.getId()));
                 }
                 vos.add(vo);
@@ -75,6 +75,7 @@ public class FeedController {
         List<Integer> followees = new ArrayList<>();
         if (localUserId != 0) {
             // 关注的人
+            //如果未登录或者没有关注的人，则返回10个没关联的feeds
             followees = followService.getFollowees(localUserId, EntityType.ENTITY_USER, Integer.MAX_VALUE);
         }
         List<Feed> feeds = feedService.getUserFeeds(Integer.MAX_VALUE, followees, 10);
@@ -92,7 +93,7 @@ public class FeedController {
                 Question question = questionService.getById(Integer.parseInt(feed.get("questionId")));
                 vo.set("commentCount",question.getCommentCount());
                 vo.set("content",question.getContent());
-                vo.set("followed",followService.isFollower(hostHolder.getUser().getId(), EntityType.ENTITY_QUESTION, question.getId()));
+                vo.set("followed",followService.isFollower(localUserId, EntityType.ENTITY_QUESTION, question.getId()));
                 vo.set("followCount", followService.getFollowerCount(EntityType.ENTITY_QUESTION, question.getId()));
             }
             vos.add(vo);

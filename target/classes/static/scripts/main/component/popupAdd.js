@@ -15,16 +15,16 @@ var oPopupAdd = new PopupAdd({
             '<div class="zh-add-question-form">',
                 '<div class="zg-section-big clearfix">',
                     '<div class="zg-form-text-input add-question-title-form" style="position: relative;">',
-                        '<input type="text" class="js-title zg-editor-input zu-seamless-input-origin-element" placeholder="写下你的问题" style="height:22px;min-height:auto;"></textarea>',
+                        '<input type="text" class="js-title zg-editor-input zu-seamless-input-origin-element" placeholder="微博标题" style="height:22px;min-height:auto;"></textarea>',
                     '</div>',
                 '</div>',
                 '<div class="zg-section-big">',
-                    '<div class="add-question-section-title">问题说明（可选）：</div>',
+                    '<div class="add-question-section-title">微博说明（可选）：</div>',
                     '<div id="zh-question-suggest-detail-container" class="zm-editable-status-editing">',
                         '<div class="zm-editable-editor-wrap no-toolbar">',
                             '<div class="zm-editable-editor-outer">',
                                 '<div class="zm-editable-editor-field-wrap">',
-                                    '<textarea class="js-content zm-editable-editor-field-element editable" placeholder="问题背景、条件等详细信息" style="font-style:italic;width:98%;"></textarea>',
+                                    '<textarea class="js-content zm-editable-editor-field-element editable" placeholder="微博详细内容" style="font-style:italic;width:98%;"></textarea>',
                                 '</div>',
                             '</div>',
                         '</div>',
@@ -56,7 +56,7 @@ var oPopupAdd = new PopupAdd({
         var bSubmit = false;
         var oPopup = new Popup({
             width: 540,
-            title: '提问',
+            title: '发表微博',
             okTxt: '发布',
             content: oAdd.html(),
             ok: function () {

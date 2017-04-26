@@ -2,13 +2,28 @@
 #parse("header.html")
 <link rel="stylesheet" href="../styles/result.css">
 <link rel="stylesheet" href="../styles/detail.css">
-<div class="zg-wrap zu-main clearfix" role="main">
     <div class="zu-main-content">
         <div class="zu-main-content-inner">
             <ul class="list contents navigable">
-                #if($vos.length==0)
-                    <li>对不起，没有找到相关内容</li>
+                #if(${vos.size()}==0 && ${users.size()}==0)
+                    <li style="color:red">对不起，没有找到相关内容</li>
                 #end
+                <li class="item clearfix">
+                    <div class="find-user" style="margin: 20px 0 0 0">
+                        #foreach($user in $users)
+                        <div style="float: left; margin: 0 20px 0 0">
+                            <div class="head">
+                                <center>
+                                <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{user.id}">
+                                    <img src="${user.headUrl}" class="zm-item-img-avatar" style="border-radius:50%;width:40px;height:40px"></a>
+                                </center>
+                            </div>
+                            <div class="name" style="width:80px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size: 4px">
+                                <a href="/user/$!{user.id}"><center>${user.name}</center></a>
+                            </div>
+                        </div>
+                        #end
+                    </div>
                 #foreach($vo in $vos)
                 <li class="item clearfix">
                     <div class="title">

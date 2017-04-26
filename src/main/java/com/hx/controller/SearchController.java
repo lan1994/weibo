@@ -52,10 +52,14 @@ public class SearchController {
                 vo.set("user", userService.getUser(q.getUserId()));
                 vos.add(vo);
             }
+
+            List<User> userList = searchService.searchUser(keyword, offset, count,
+                    "", "");
             model.addAttribute("vos", vos);
+            model.addAttribute("users", userList);
             model.addAttribute("keyword", keyword);
         } catch (Exception e) {
-            logger.error("搜索评论失败" + e.getMessage());
+            logger.error("搜索失败" + e.getMessage(), e);
         }
         return "result";
     }

@@ -50,14 +50,14 @@ public class UserService {
         user = new User();
         user.setName(username);
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
-        String head = String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000));
+        String head = String.format("/images/normal/%d.jpg", new Random().nextInt(75)+1);
         user.setHeadUrl(head);
         user.setPassword(WeiBoUtil.MD5(password+user.getSalt()));
         userDAO.addUser(user);
-
         // 登陆
         String ticket = addLoginTicket(user.getId());
         map.put("ticket", ticket);
+        map.put("user", user);
         return map;
     }
 
