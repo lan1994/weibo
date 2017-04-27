@@ -24,7 +24,7 @@ public class AddQuestionHandler implements EventHandler {
             searchService.indexQuestion(model.getEntityId(),
                     model.getExt("title"), model.getExt("content"));
         } catch (Exception e) {
-            logger.error("增加题目索引失败");
+            logger.error("增加微博索引失败", e);
         }
     }
 

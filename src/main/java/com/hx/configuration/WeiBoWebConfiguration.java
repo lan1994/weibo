@@ -19,7 +19,8 @@ public class WeiBoWebConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(passportInterceptor);
-        registry.addInterceptor(loginRequiredInterceptor).addPathPatterns("/user/*");
+        registry.addInterceptor(loginRequiredInterceptor)
+                .addPathPatterns("/user/*").addPathPatterns("/question/*");
         super.addInterceptors(registry);
     }
 }

@@ -30,6 +30,9 @@ public class SearchController {
     @Autowired
     QuestionService questionService;
 
+    @Autowired
+    HostHolder hostHolder;
+
     @RequestMapping(path = {"/search"}, method = {RequestMethod.GET})
     public String search(Model model, @RequestParam("q") String keyword,
                          @RequestParam(value = "offset", defaultValue = "0") int offset,
@@ -39,24 +42,50 @@ public class SearchController {
                     "<em>", "</em>");
             List<ViewObject> vos = new ArrayList<>();
             for (Question question : questionList) {
-                Question q = questionService.getById(question.getId());
-                ViewObject vo = new ViewObject();
-                if (question.getContent() != null) {
-                    q.setContent(question.getContent());
+                ViewObject vo = getViewObject(question);
+                if(vo == null){
+                    continue;
                 }
-                if (question.getTitle() != null) {
-                    q.setTitle(question.getTitle());
-                }
-                vo.set("question", q);
-                vo.set("followCount", followService.getFollowerCount(EntityType.ENTITY_QUESTION, question.getId()));
-                vo.set("user", userService.getUser(q.getUserId()));
                 vos.add(vo);
             }
+            List<User> userList = searchService.searchUser(keyword, offset, count,
+                    "", "");
+            List<Question> hotCommentQuestionList = questionService.getHotCommentQuestions(0, 20);
+            List<ViewObject> hotCommentQuestionVos = new ArrayList<>();
+            for (Question question:hotCommentQuestionList){
+                ViewObject vo = getViewObject(question);
+                if(vo == null){
+                    continue;
+                }
+                hotCommentQuestionVos.add(vo);
+            }
             model.addAttribute("vos", vos);
+            model.addAttribute("users", userList);
+            model.addAttribute("hotCommentQuestions", hotCommentQuestionVos);
             model.addAttribute("keyword", keyword);
         } catch (Exception e) {
-            logger.error("搜索评论失败" + e.getMessage());
+            logger.error("搜索失败" + e.getMessage(), e);
         }
         return "result";
+    }
+
+    private ViewObject getViewObject(Question question) {
+        Question q = questionService.getById(question.getId());
+        int localUserId = hostHolder.getUser() != null ? hostHolder.getUser().getId() : 0;
+        if (q == null) {
+            return null;
+        }
+        ViewObject vo = new ViewObject();
+        if (question.getContent() != null) {
+            q.setContent(question.getContent());
+        }
+        if (question.getTitle() != null) {
+            q.setTitle(question.getTitle());
+        }
+        vo.set("question", q);
+        vo.set("followCount", followService.getFollowerCount(EntityType.ENTITY_QUESTION, question.getId()));
+        vo.set("followed",followService.isFollower(localUserId, EntityType.ENTITY_QUESTION, question.getId()));
+        vo.set("user", userService.getUser(q.getUserId()));
+        return vo;
     }
 }

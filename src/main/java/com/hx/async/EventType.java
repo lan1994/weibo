@@ -8,7 +8,8 @@ public enum EventType {
     MAIL(3),
     FOLLOW(4),
     UNFOLLOW(5),
-    ADD_QUESTION(6);
+    ADD_QUESTION(6),
+    REGISTER(7);
 
     private int value;
     EventType(int value) { this.value = value; }

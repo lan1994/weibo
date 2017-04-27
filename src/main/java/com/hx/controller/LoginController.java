@@ -3,6 +3,7 @@ package com.hx.controller;
 import com.hx.async.EventModel;
 import com.hx.async.EventProducer;
 import com.hx.async.EventType;
+import com.hx.model.User;
 import com.hx.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -45,6 +46,9 @@ public class LoginController {
                     cookie.setMaxAge(3600*24*5);
                 }
                 response.addCookie(cookie);
+                User user = (User) map.get("user");
+                eventProducer.fireEvent(new EventModel(EventType.REGISTER).setEntityId(user.getId())
+                        .setExt("userName", user.getName()).setExt("headUrl", user.getHeadUrl()));
                 if (StringUtils.isNotBlank(next)) {
                     return "redirect:" + next;
                 }

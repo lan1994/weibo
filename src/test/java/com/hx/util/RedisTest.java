@@ -2,6 +2,7 @@ package com.hx.util;
 import org.apache.commons.collections.buffer.BlockingBuffer;
 import redis.clients.jedis.*;
 
+import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -14,6 +15,7 @@ public class RedisTest {
         jedis.flushDB();
         jedis.set("kk","ss");
         System.out.print(jedis.get("kk"));
-
+        Random random = new Random();
+        System.out.println(random.nextInt(100));
     }
 }

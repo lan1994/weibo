@@ -7630,11 +7630,7 @@ address,sup {
 .zg-mb15 {
     margin:0 0 15px
 }
-.zg-locked {
-    background:transparent url(../images/img/lock.070c061d.gif) scroll no-repeat 0 5px;
-    color:#999;
-    padding:0 0 0 15px
-}
+
 .zu-autohide {
     display:none
 }

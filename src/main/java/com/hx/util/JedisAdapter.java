@@ -240,6 +240,21 @@ public class JedisAdapter implements InitializingBean {
         return false;
     }
 
+    public long llen(String key){
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.llen(key);
+        } catch (Exception e){
+            logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+        return -1;
+    }
+
     public List<String> brpop(int timeout, String key) {
         Jedis jedis = null;
         try {

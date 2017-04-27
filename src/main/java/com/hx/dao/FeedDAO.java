@@ -22,7 +22,11 @@ public interface FeedDAO {
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     Feed getFeedById(int id);
 
+    int getFeedsCount(@Param("userIds") List<Integer> userIds,@Param("eventType") int eventType);
+
     List<Feed> selectUserFeeds(@Param("maxId") int maxId,
                                @Param("userIds") List<Integer> userIds,
-                               @Param("count") int count);
+                               @Param("eventType") int eventType,
+                               @Param("offset") int offset,
+                               @Param("limit") int limit);
 }

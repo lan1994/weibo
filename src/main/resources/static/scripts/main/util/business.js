@@ -66,7 +66,7 @@
                         oEl.removeClass('zg-btn-white zg-btn-green').addClass(bFollow ? 'zg-btn-green' : 'zg-btn-white');
                     }
                     // 文字
-                    oEl.html(bFollow ? '关注问题' : '取消关注');
+                    oEl.html(bFollow ? '<i class="z-icon-follow"></i>关注微博' : '<i class="z-icon-follow"></i>取消关注');
                     // 修改数量
                     if(oEl.attr('nocolor')!='1'){
                     oCountEl.html(oResult.count);

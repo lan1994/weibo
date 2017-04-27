@@ -10,6 +10,7 @@ public class Question {
     private Date createdDate;
     private int userId;
     private int commentCount;
+    private String userImga;
 
     public int getId() {
         return id;
@@ -57,5 +58,13 @@ public class Question {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public String getUserImga() {
+        return userImga;
+    }
+
+    public void setUserImga(String userImga) {
+        this.userImga = userImga;
     }
 }

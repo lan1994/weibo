@@ -27,7 +27,7 @@
                         -->
                     <div class="zm-item-answer-author-info">
                         <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/$!{vo.userId}">$!{vo.userName}</a>
-                        评论了该问题 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})</div>
+                        评论了该微博 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})</div>
                     <!--
                     <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
                         <span class="voters text">
@@ -44,7 +44,7 @@
                     <div class="zm-item-meta answer-actions clearfix js-contentActions">
                         <div class="zm-meta-panel">
                             <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
-                                <i class="z-icon-follow"></i>关注问题</a>
+                                <i class="z-icon-follow"></i>关注微博</a>
                             <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                 <i class="z-icon-comment"></i>${vo.question.commentCount} 条评论</a>
 
@@ -89,7 +89,7 @@
                         -->
                     <div class="zm-item-answer-author-info">
                         <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/$!{vo.userId}">$!{vo.userName}</a>
-                        关注了该问题 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})</div>
+                        关注了该微博 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})</div>
                     <!--
                     <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
                         <span class="voters text">
@@ -97,8 +97,8 @@
                                 <span class="js-voteCount">4168</span>&nbsp;人赞同</a></span>
                     </div>
                     -->
-                    <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="123114" data-action="/answer/content" data-author-name="李淼" data-entry-url="/question/19857995/answer/13174385">
-                        <div class="zh-summary summary clearfix">${vo.questionTitle}</div>
+                    <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="123114" data-action="/answer/content" data-author-name="" data-entry-url="/question/19857995/answer/13174385">
+                        <div class="zh-summary summary clearfix">$!{vo.questionTitle}</div>
                     </div>
                 </div>
                 <!--
@@ -106,7 +106,7 @@
                     <div class="zm-item-meta answer-actions clearfix js-contentActions">
                         <div class="zm-meta-panel">
                             <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
-                                <i class="z-icon-follow"></i>关注问题</a>
+                                <i class="z-icon-follow"></i>关注微博</a>
                             <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                 <i class="z-icon-comment"></i>${vo.question.commentCount} 条评论</a>
 
@@ -153,11 +153,13 @@
 
                     <div class="zm-item-answer-author-info">
                         <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/$!{vo.userId}">$!{vo.userName}</a>
-                        发表了问题 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})
+                        发表了微博 ，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.createdDate})
                     </div>
 
                     <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="123114" data-action="/answer/content" data-author-name="" data-entry-url="/question/19857995/answer/13174385">
-                        <div class="zh-summary summary clearfix">${vo.content}</div>
+                        <div class="zh-summary summary clearfix">
+                            <a href="/question/$!{vo.questionId}" style="color: ">${vo.content}</a>
+                        </div>
                     </div>
 
                     <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
@@ -180,7 +182,7 @@
                             </a>
                             #else
                             <a data-follow="q:link" class="follow-link zg-follow meta-item js-follow-question" href="javascript:;" id="sfb-123114" data-id="${vo.questionId}" nocolor="1">
-                                <i class="z-icon-follow"></i>关注问题
+                                <i class="z-icon-follow"></i>关注微博
                             </a>
                             #end
                             <a href="/question/$!{vo.questionId}" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
@@ -210,24 +212,56 @@
                     <i class="zg-icon zg-icon-feedlist"></i>最新动态
                     <input type="hidden" id="is-topstory">
                     <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
-                        <a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">
-                            <i class="zg-icon zg-icon-settings"></i>设置</a></span>
+                        </span>
                 </div>
                 <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt; .zh-general-list .feed-content&quot;,&quot;offsetTop&quot;:-82}">
                     <a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none"></a>
                     <div id="js-home-feed-list" class="zh-general-list topstory clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}" data-delayed="true" data-za-module="TopStoryFeedList">
 
                         #foreach($vo in $feeds)
-                            #if($vo.type == 1)
+
+                        #* #if($vo.type == 1)
                                 #comment_question($vo)
                             #elseif($vo.type==4)
                                 #follow_question($vo)
                             #elseif($vo.type==6)
                                 #add_question($vo)
                             #end
+
+                        *#
+                            #if($vo.type==6)
+                                #add_question($vo)
+                            #end
                         #end
                     </div>
-                    <a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a></div>
+
+
+                    <div class="container-fluid" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="pagination">
+                                    <li>
+                                        #set($prev = $nextPage - 1)
+                                        <a href="/${type}/${prev}">Prev</a>
+                                    </li>
+                                    #foreach($page in $pageDisplayArray)
+                                    #set($style="")
+                                    #if($nextPage == $page)
+                                    #set($style="style='color:grey'")
+                                    #end
+                                    <li>
+                                        <a href="/${type}/$page" $style>$page</a>
+                                    </li>
+                                    #end
+                                    <li>
+                                        #set($next = $nextPage + 1)
+                                        <a href="/${type}/${next}">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a></div>-->
             </div>
         </div>
     </div>
