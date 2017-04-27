@@ -458,11 +458,7 @@ address,sup {
 .zg-mb15 {
     margin:0 0 15px
 }
-.zg-locked {
-    background:transparent url(../images/img/lock.070c061d.gif) scroll no-repeat 0 5px;
-    color:#999;
-    padding:0 0 0 15px
-}
+
 .zu-autohide {
     display:none
 }
@@ -867,7 +863,9 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
     z-index:2
 }
 .zu-main.no-sidebar .zu-main-content {
-    float:none
+    float:none;
+    padding: 200px;
+
 }
 .zu-main.no-sidebar .zu-main-content-inner {
     margin:0
@@ -878,6 +876,7 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
 }
 }.zu-main-content {
     float:left;
+     margin: 0 0 0 190px;
     width:100%
 }
 .zu-main-content-inner {
@@ -899,7 +898,9 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
     margin:0
 }
 .zu-main-content {
-    float:none
+    float:none;
+    padding: 200px;
+    margin:200px;
 }
 .zu-main-sidebar {
     float:none;

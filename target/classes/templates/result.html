@@ -1,46 +1,101 @@
 #set($bodyclass = "page-search")
 #parse("header.html")
+#macro (render_question,$vo)
+<li class="item clearfix">
+    <div class="feed-main">
+    <div class="avatar" style="float: left;">
+        <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{vo.user.id}">
+            <img src="$!{vo.user.headUrl}" class="zm-item-img-avatar" style="width: 40px;height: 40px"></a>
+    </div>
+    <div class="title">
+        <a target="_blank" href="/question/$!{vo.question.id}" class="js-title-link">$!{vo.question.title}</a>
+    </div>
+    <div class="content">
+        <ul class="answers">
+            <li class="answer-item clearfix">
+                <div class="entry answer">
+                    <div class="entry-body">
+                        <div class="entry-meta">
+                            <strong class="author-line"><a class="author" href="/user/$!{vo.user.id}">$!{vo.user.name}</a>，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</strong>
+                        </div>
+                        <div class="entry-content js-collapse-body">
+                            <div class="summary hidden-expanded" style="">
+                                <a href="/question/$!{vo.question.id}" style="color: #0a1015">$!{vo.question.content}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feed-meta" style="height: 20px">
+                    <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                        <div class="entry-left hidden-phone" style="margin:3px 10px 0 0">
+                            <a class="zm-item-vote-count hidden-expanded js-expand js-vote-count js-user-count" data-bind-votecount="">${vo.followCount}</a>
+                        </div>
+                        <div class="zm-meta-panel">
+                            #if ($vo.followed)
+                            <a data-follow="q:link" class="follow-link zg-follow meta-item js-follow-question" href="javascript:;" id="sfb-123114" data-status="1" data-id="${vo.question.id}" nocolor="1">
+                                <i class="z-icon-follow"></i>取消关注
+                            </a>
+                            #else
+                            <a data-follow="q:link" class="follow-link zg-follow meta-item js-follow-question" href="javascript:;" id="sfb-123114" data-id="${vo.question.id}" nocolor="1">
+                                <i class="z-icon-follow"></i>关注微博
+                            </a>
+                            #end
+                            <a href="/question/$!{vo.question.id}" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+                                <i class="z-icon-comment"></i>$!{vo.question.commentCount} 条评论</a>
+                            <button class="meta-item item-collapse js-collapse">
+                                <i class="z-icon-fold"></i>收起</button>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</li>
+#end
 <link rel="stylesheet" href="../styles/result.css">
 <link rel="stylesheet" href="../styles/detail.css">
-<div class="zg-wrap zu-main clearfix" role="main">
     <div class="zu-main-content">
         <div class="zu-main-content-inner">
             <ul class="list contents navigable">
-                #if($vos.length==0)
-                    <li>对不起，没有找到相关内容</li>
-                #end
-                #foreach($vo in $vos)
                 <li class="item clearfix">
-                    <div class="title">
-                        <a target="_blank" href="/question/$!{vo.question.id}" class="js-title-link">$!{vo.question.title}</a>
+                    <div class="find-user" style="margin: 20px 0 0 0">
+                        <!--#if(${users.size()}==0)-->
+                            <!--<span style="color:red">没有找到相关用户</span>-->
+                        <!--#end-->
+                        #foreach($user in $users)
+                        <div style="float: left; margin: 0 20px 0 0">
+                            <div class="head">
+                                <center>
+                                <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{user.id}">
+                                    <img src="${user.headUrl}" class="zm-item-img-avatar" style="border-radius:50%;width:40px;height:40px"></a>
+                                </center>
+                            </div>
+                            <!--display: -webkit-box;-->
+                            <!-- -webkit-box-orient: vertical;-->
+                            <!-- -webkit-line-clamp: 3;-->
+                            <!--overflow: hidden;-->
+                            <!--white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-->
+                            <div class="name" style="width:80px;font-size: 4px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
+                                <a href="/user/$!{user.id}"><center>${user.name}</center></a>
+                            </div>
+                        </div>
+                        #end
                     </div>
-                    <div class="content">
-
-                        <ul class="answers">
-                            <li class="answer-item clearfix">
-                                <div class="entry answer">
-                                    <div class="entry-left hidden-phone">
-                                        <a class="zm-item-vote-count hidden-expanded js-expand js-vote-count" data-bind-votecount="">${vo.followCount}</a>
-                                    </div>
-                                    <div class="entry-body">
-                                        <div class="entry-meta">
-                                            <strong class="author-line"><a class="author" href="/user/$!{vo.user.id}">$!{vo.user.name}</a>，$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</strong>
-                                        </div>
-                                        <div class="entry-content js-collapse-body">
-                                            <div class="summary hidden-expanded" style="">
-                                            $!{vo.question.content}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                #end
+                    <!--#if(${vos.size()}==0)-->
+                    <!--<span style="color:red">没有找到相关微博</span>-->
+                    <!--#end-->
+                    #foreach($vo in $vos)
+                        #render_question($vo)
+                    #end
+                    #foreach($vo in $hotCommentQuestions)
+                        #render_question($vo)
+                    #end
             </ul>
         </div>
     </div>
 </div>
 #parse("js.html")
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
 #parse("footer.html")

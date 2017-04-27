@@ -567,12 +567,6 @@ address,sup {
     margin: 0 0 15px
 }
 
-.zg-locked {
-    background: transparent url(../images/img/lock.070c061d.gif) scroll no-repeat 0 5px;
-    color: #999;
-    padding: 0 0 0 15px
-}
-
 .zu-autohide {
     display: none
 }
@@ -16590,6 +16584,7 @@ html.no-touchevents .carousel:hover .carousel-navigation-btn {
 }
 .zm-profile-section-wrap {
     margin-bottom: 20px;
+    margin-top: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 1px 0 #f2f4f5;
