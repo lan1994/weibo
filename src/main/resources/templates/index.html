@@ -81,32 +81,27 @@
                             </div>
                         </div>
                         #end
+                        <ul class="pagination">
+                            <li>
+                                #set($prev = $nextPage - 1)
+                                <a href="/home/${prev}">Prev</a>
+                            </li>
+                            #foreach($page in $pageDisplayArray)
+                            #set($style="")
+                            #if($nextPage == $page)
+                            #set($style="style='color:grey'")
+                            #end
+                            <li>
+                                <a href="/home/$page" $style>$page</a>
+                            </li>
+                            #end
+                            <li>
+                                #set($next = $nextPage + 1)
+                                <a href="/home/${next}">Next</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="container-fluid" style="text-align: center;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="pagination">
-                                    <li>
-                                        #set($prev = $nextPage - 1)
-                                        <a href="/home/${prev}">Prev</a>
-                                    </li>
-                                    #foreach($page in $pageDisplayArray)
-                                        #set($style="")
-                                        #if($nextPage == $page)
-                                            #set($style="style='color:grey'")
-                                        #end
-                                    <li>
-                                        <a href="/home/$page" $style>$page</a>
-                                    </li>
-                                    #end
-                                    <li>
-                                        #set($next = $nextPage + 1)
-                                        <a href="/home/${next}">Next</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
                     <!--<a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a></div>-->
             </div>
         </div>
