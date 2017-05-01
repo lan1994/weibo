@@ -5634,6 +5634,7 @@ html {
   height: auto;
   position: relative;
   background-color: #FFF;
+  background-image: url(../images/img/shattered.png);
 }
 
 /* line 29, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
@@ -5659,7 +5660,7 @@ form {
 
 /* line 48, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 #main {
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 /* line 52, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
@@ -7382,8 +7383,9 @@ object:not([data]) {
     display:none
 }
 body.zhi {
-    padding-top:46px;
+    /*padding-top:46px;*/
     _padding-top:64px;
+    background-image: url(../images/img/shattered.png);
     -webkit-font-smoothing:subpixel-antialiased
 }
 html.in-app body.zhi {
@@ -8026,12 +8028,25 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
 .zg-wrap {
     width:960px;
     margin:0 auto;
-    clear:both
+    /*clear:both*/
+}
+.footer{
+  padding-top: 30px;
+  width: 960px;
+  padding-bottom: 25px;
+  padding-top: 5px;
+  margin: 0 auto;
+  font-size: 12px;
+  font-style: italic;
+  padding-right: 10px;
 }
 .zu-main {
     min-height:340px;
-    padding:25px 0 50px;
+    padding-top: 25px;
     position:relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    background:#F3F3F4 ;
     z-index:2
 }
 .zu-main.no-sidebar .zu-main-content {
@@ -14993,11 +15008,12 @@ a>.invisible {
     cursor:default
 }
 .zu-top {
-    position:fixed;
+   /* position:fixed;*/
     top:0;
     left:0;
+    margin: 0 auto;
     z-index:20;
-    width:100%;
+    width:960px;
     height:45px;
     background:#3d444c;
     /*background:-webkit-linear-gradient(top,#086ed5,#055db5);
