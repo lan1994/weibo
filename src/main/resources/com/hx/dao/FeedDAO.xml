@@ -11,7 +11,7 @@
         FROM
         <include refid="table"/>
 
-        WHERE id &lt; #{maxId}
+        WHERE id &lt; #{maxId} AND TYPE = #{eventType}
 
         <if test="userIds.size() != 0">
             AND user_id in
@@ -21,6 +21,19 @@
             </foreach>
         </if>
         ORDER BY id DESC
-        LIMIT #{count}
+        LIMIT #{offset},#{limit}
+    </select>
+    
+    <select id="getFeedsCount" resultType="int">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        WHERE type = #{eventType}
+        <if test="userIds.size() != 0">
+            AND user_id in
+            <foreach item="item" index="index" collection="userIds"
+                     open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
     </select>
 </mapper>

@@ -34,6 +34,18 @@ public class QuestionService {
         return questionDAO.selectLatestQuestions(userId, offset, limit);
     }
 
+    public List<Question> getHotCommentQuestions(int offset, int limit){
+        return questionDAO.selectHotCommentQuestions(offset, limit);
+    }
+
+    public boolean deleteQuestion(int id) {
+        return questionDAO.deleteQuestion(id) > 0;
+    }
+
+    public int getQuestionCount(int userId){
+        return questionDAO.getQuestionCount(userId);
+    }
+
     public int updateCommentCount(int id, int count) {
         return questionDAO.updateCommentCount(id, count);
     }

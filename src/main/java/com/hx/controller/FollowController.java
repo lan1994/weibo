@@ -87,7 +87,7 @@ public class FollowController {
                 .setActorId(hostHolder.getUser().getId()).setEntityId(questionId)
                 .setEntityType(EntityType.ENTITY_QUESTION).setEntityOwnerId(q.getUserId()));
 
-        Map<String, Object> info = new HashMap<>();
+        Map<String, Object> info = new HashMap<String, Object>();
         info.put("headUrl", hostHolder.getUser().getHeadUrl());
         info.put("name", hostHolder.getUser().getName());
         info.put("id", hostHolder.getUser().getId());
@@ -113,7 +113,7 @@ public class FollowController {
                 .setActorId(hostHolder.getUser().getId()).setEntityId(questionId)
                 .setEntityType(EntityType.ENTITY_QUESTION).setEntityOwnerId(q.getUserId()));
 
-        Map<String, Object> info = new HashMap<>();
+        Map<String, Object> info = new HashMap<String, Object>();
         info.put("id", hostHolder.getUser().getId());
         info.put("count", followService.getFollowerCount(EntityType.ENTITY_QUESTION, questionId));
         return WeiBoUtil.getJSONString(ret ? 0 : 1, info);

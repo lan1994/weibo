@@ -91,7 +91,7 @@ public class FollowService {
     }
 
     private List<Integer> getIdsFromSet(Set<String> idset) {
-        List<Integer> ids = new ArrayList<>();
+        List<Integer> ids = new ArrayList<Integer>();
         for (String str : idset) {
             ids.add(Integer.parseInt(str));
         }

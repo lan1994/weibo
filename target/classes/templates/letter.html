@@ -1,44 +1,63 @@
 #parse("header.html")
-<link rel="stylesheet" media="all" href="../styles/letter.css">
+#parse("js.html")
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+<link rel="stylesheet" media="all" href="/../styles/letter.css">
     <div id="main">
         <div class="zg-wrap zu-main clearfix ">
             <ul class="letter-list">
                 #foreach($conversation in $conversations)
-                <li id="conversation-item-10005_622873">
-                    <a class="letter-link" href="/msg/detail?conversationId=$conversation.message.conversationId"></a>
-                    <div class="letter-info">
-                        <span class="l-time">$data.format('yyyy-MM-dd HH:mm:ss', $conversation.message.createdDate)</span>
-                        <div class="l-operate-bar">
-                            <!--<a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">
-                            删除
-                            </a>-->
-                            <a href="/msg/detail?$conversation.message.conversationId">
-                                共$conversation.message.id条会话
+                <a class="letter-link" href="/msg/detail/0?conversationId=$conversation.message.conversationId&page=0">
+                    <li id="conversation-item-10005_622873">
+                        <div class="letter-info">
+                            <span class="l-time">$data.format('yyyy-MM-dd HH:mm:ss', $conversation.message.createdDate)</span>
+                            <div class="l-operate-bar">
+                                <!--<a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">
+                                删除
+                                </a>-->
+                                <a href="/msg/detail/0?conversationId=$conversation.message.conversationId&page=0">
+                                    共$conversation.message.id条会话
+                                </a>
+                            </div>
+                        </div>
+                        <div class="chat-headbox">
+                            <span class="msg-num">
+                                $conversation.unread
+                            </span>
+                            <a class="list-head">
+                                <img alt="头像" src="$conversation.user.headUrl">
                             </a>
                         </div>
-                    </div>
-                    <div class="chat-headbox">
-                        <span class="msg-num">
-                            $conversation.unread
-                        </span>
-                        <a class="list-head">
-                            <img alt="头像" src="$conversation.user.headUrl">
-                        </a>
-                    </div>
-                    <div class="letter-detail">
-                        <a title="通知" class="letter-name level-color-1">
-                            $conversation.user.name
-                        </a>
-                        <p class="letter-brief">
-                            $conversation.message.content
-                        </p>
-                    </div>
-                </li>
+                        <div class="letter-detail">
+                            <a title="通知" class="letter-name level-color-1">
+                                $conversation.user.name
+                            </a>
+                            <p class="letter-brief">
+                                $conversation.message.content
+                            </p>
+                        </div>
+                    </li>
+                </a>
                 #end
                 </ul>
-
+            <ul class="pagination">
+                <li>
+                    #set($prev = $nextPage - 1)
+                    <a href="/msg/list/${prev}">Prev</a>
+                </li>
+                #foreach($page in $pageDisplayArray)
+                #set($style="")
+                #if($nextPage == $page)
+                #set($style="style='color:grey'")
+                #end
+                <li>
+                    <a href="/msg/list/${page}" $style>$page</a>
+                </li>
+                #end
+                <li>
+                    #set($next = $nextPage + 1)
+                    <a href="/msg/list/${next}">Next</a>
+                </li>
+            </ul>
         </div>
     </div>
-#parse("js.html")
-<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
 #parse("footer.html")

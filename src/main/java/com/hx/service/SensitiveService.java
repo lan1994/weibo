@@ -21,7 +21,7 @@ public class SensitiveService implements InitializingBean {
     /**
      * 默认敏感词替换符
      */
-    private static final String DEFAULT_REPLACEMENT = "敏感词";
+    private static final String DEFAULT_REPLACEMENT = "***";
 
 
     private class TrieNode {
@@ -34,7 +34,7 @@ public class SensitiveService implements InitializingBean {
         /**
          * key下一个字符，value是对应的节点
          */
-        private Map<Character, TrieNode> subNodes = new HashMap<>();
+        private Map<Character, TrieNode> subNodes = new HashMap<Character, TrieNode>();
 
         /**
          * 向指定位置添加节点树

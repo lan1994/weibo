@@ -16,8 +16,8 @@ public class CommentService {
     @Autowired
     SensitiveService sensitiveService;
 
-    public List<Comment> getCommentsByEntity(int entityId, int entityType) {
-        return commentDAO.selectCommentByEntity(entityId, entityType);
+    public List<Comment> getCommentsByEntity(int entityId, int entityType, int offset, int limit) {
+        return commentDAO.selectCommentByEntity(entityId, entityType ,offset,limit);
     }
 
     public int addComment(Comment comment) {
@@ -35,10 +35,30 @@ public class CommentService {
     }
 
     public boolean deleteComment(int commentId) {
-        return commentDAO.updateStatus(commentId, 1) > 0;
+        return commentDAO.deleteComment(commentId) > 0;
+    }
+
+    public boolean deleteCommentbyQuestion(int commentId) {
+        return commentDAO.deleteCommentbyQuestion(commentId) > 0;
+    }
+
+
+
+    public int updateComment(Comment comment) {
+        comment.setContent(HtmlUtils.htmlEscape(comment.getContent()));
+        comment.setContent(sensitiveService.filter(comment.getContent()));
+        return commentDAO.updateComment(comment) > 0 ? comment.getId() : 0;
+    }
+
+    public int updateCommentCount(Comment comment) {
+        return commentDAO.updateCommentCount(comment) > 0 ? comment.getId() : 0;
     }
 
     public Comment getCommentById(int id) {
         return commentDAO.getCommentById(id);
+    }
+
+    public List<Comment> getCommentChild(int parent) {
+        return commentDAO.getCommentChild(parent);
     }
 }

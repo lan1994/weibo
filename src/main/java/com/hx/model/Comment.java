@@ -1,6 +1,7 @@
 package com.hx.model;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class Comment {
@@ -11,6 +12,10 @@ public class Comment {
     private String content;
     private Date createdDate;
     private int status;
+    private int parent;
+    private int count;
+    private int toUserId;
+    private List<Comment> comment;
     //private int toUserId //评论了谁
     //private int conversitinId userxiao_userda规则，为了能显示出会话
     public int getId() {
@@ -67,5 +72,37 @@ public class Comment {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getParent() {
+        return parent;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setParent(int parent) {
+        this.parent = parent;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getToUserId() {
+        return toUserId;
+    }
+
+    public void setToUserId(int toUserId) {
+        this.toUserId = toUserId;
     }
 }

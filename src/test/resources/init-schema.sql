@@ -7,7 +7,7 @@ CREATE TABLE `question` (
   `created_date` DATETIME NOT NULL,
   `comment_count` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `date_index` (`created_date` ASC))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  INDEX `date_index` (`created_date` ASC))ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
   DROP TABLE IF EXISTS `user`;
   CREATE TABLE `user` (
@@ -18,7 +18,7 @@ CREATE TABLE `question` (
     `head_url` varchar(256) NOT NULL DEFAULT '',
     PRIMARY KEY (`id`),
     UNIQUE KEY `name` (`name`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
   DROP TABLE IF EXISTS `login_ticket`;
   CREATE TABLE `login_ticket` (
@@ -29,7 +29,7 @@ CREATE TABLE `question` (
     `status` INT NULL DEFAULT 0,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `ticket_UNIQUE` (`ticket` ASC)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
   DROP TABLE IF EXISTS `comment`;
   CREATE TABLE `comment` (
@@ -42,7 +42,7 @@ CREATE TABLE `question` (
   `status` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `entity_index` (`entity_id` ASC, `entity_type` ASC)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
   DROP TABLE IF EXISTS `message`;
   CREATE TABLE `message` (
@@ -57,7 +57,7 @@ CREATE TABLE `question` (
     INDEX `conversation_index` (`conversation_id` ASC),
     INDEX `created_date` (`created_date` ASC))
   ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
+  DEFAULT CHARACTER SET = utf8mb4;
 
   DROP TABLE IF EXISTS `feed`;
   CREATE TABLE `feed` (
@@ -69,4 +69,4 @@ CREATE TABLE `question` (
     PRIMARY KEY (`id`),
     INDEX `user_index` (`user_id` ASC))
   ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
+  DEFAULT CHARACTER SET = utf8mb4;

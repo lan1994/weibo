@@ -13,7 +13,7 @@
 
     function fInitialize() {
         var that = this;
-        // 点击关注问题
+        // 点击关注微博
         Business.followQuestion({
             countEl: $('.js-user-count'),
             listEl: $('.js-user-list'),

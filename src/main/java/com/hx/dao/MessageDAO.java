@@ -1,10 +1,7 @@
 package com.hx.dao;
 
 import com.hx.model.Message;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,6 +22,14 @@ public interface MessageDAO {
                                         @Param("offset") int offset,
                                         @Param("limit") int limit);
 
+    @Select({"select count(*) from ", TABLE_NAME,
+            " where conversation_id=#{conversationId}"})
+    int getConversationCount(@Param("conversationId") String conversationId);
+
+    @Select({"select ", INSERT_FIELDS, " , count(id) as id from ( select * from ", TABLE_NAME,
+            " where from_id=#{userId} or to_id=#{userId} order by created_date desc) tt group by conversation_id order by created_date desc"})
+    List<Message> getConversationListCount(@Param("userId") int userId);
+
     @Select({"select ", INSERT_FIELDS, " , count(id) as id from ( select * from ", TABLE_NAME,
             " where from_id=#{userId} or to_id=#{userId} order by created_date desc) tt group by conversation_id order by created_date desc limit #{offset}, #{limit}"})
     List<Message> getConversationList(@Param("userId") int userId,
@@ -33,4 +38,8 @@ public interface MessageDAO {
 
     @Select({"select count(id) from ", TABLE_NAME, " where has_read=0 and to_id=#{userId} and conversation_id=#{conversationId}"})
     int getConversationUnreadCount(@Param("userId") int userId, @Param("conversationId") String conversationId);
+
+    @Delete({"delete from" , TABLE_NAME ," where id=#{id}"})
+    int deleteMessage(@Param("id") int id);
+
 }

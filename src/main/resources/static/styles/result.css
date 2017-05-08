@@ -210,7 +210,6 @@ object:not([data]) {
     display:none
 }
 body.zhi {
-    padding-top:46px;
     _padding-top:64px;
     -webkit-font-smoothing:subpixel-antialiased
 }
@@ -458,11 +457,7 @@ address,sup {
 .zg-mb15 {
     margin:0 0 15px
 }
-.zg-locked {
-    background:transparent url(../images/img/lock.070c061d.gif) scroll no-repeat 0 5px;
-    color:#999;
-    padding:0 0 0 15px
-}
+
 .zu-autohide {
     display:none
 }
@@ -867,7 +862,9 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
     z-index:2
 }
 .zu-main.no-sidebar .zu-main-content {
-    float:none
+    float:none;
+    padding: 200px;
+
 }
 .zu-main.no-sidebar .zu-main-content-inner {
     margin:0
@@ -877,8 +874,8 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
     margin:0 10px
 }
 }.zu-main-content {
-    float:left;
-    width:100%
+    width:960px;
+     margin: 0 auto;
 }
 .zu-main-content-inner {
     position:relative;
@@ -899,7 +896,9 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
     margin:0
 }
 .zu-main-content {
-    float:none
+    float:none;
+    padding: 200px;
+    margin:200px;
 }
 .zu-main-sidebar {
     float:none;
@@ -2466,30 +2465,6 @@ textarea.Input {
     width:100px;
     height:100px;
     border-radius:4px
-}
-.avatar.\34 0 {
-    width:40px;
-    height:40px;
-    border-radius:4px
-}
-.avatar.\35 0 {
-    width:50px;
-    height:50px;
-    border-radius:4px
-}
-.avatar.\36 0 {
-    width:60px;
-    height:60px;
-    border-radius:4px
-}
-.Spinner {
-    display:inline-block;
-    width:14px;
-    height:15px;
-    background-image:url(../images/res/grey-loading.b016b1c7.gif)
-}
-.Spinner--light {
-    background-image:url(../images/res/lightgray-loading.e0eefd9c.gif)
 }
 .Sorter {
     overflow:hidden;
@@ -7918,7 +7893,6 @@ a>.invisible {
     cursor:default
 }
 .zu-top {
-    position:fixed;
     top:0;
     left:0;
     z-index:20;

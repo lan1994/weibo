@@ -19,10 +19,18 @@ public interface QuestionDAO {
     List<Question> selectLatestQuestions(@Param("userId") int userId, @Param("offset") int offset,
                                          @Param("limit") int limit);
 
+    int getQuestionCount(@Param("userId") int userId);
+
+    @Select({"select ",SELECT_FIELDS," from ", TABLE_NAME,
+            "order by comment_count desc limit #{offset},#{limit}"})
+    List<Question> selectHotCommentQuestions(@Param("offset") int offset, @Param("limit") int limit);
+
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
     Question getById(int id);
 
     @Update({"update ", TABLE_NAME, " set comment_count = #{commentCount} where id=#{id}"})
     int updateCommentCount(@Param("id") int id, @Param("commentCount") int commentCount);
 
+    @Delete({"delete from" , TABLE_NAME ," where id=#{id}"})
+    int deleteQuestion(@Param("id") int id);
 }

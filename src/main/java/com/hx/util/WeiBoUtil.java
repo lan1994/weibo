@@ -5,6 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 
@@ -67,5 +70,12 @@ public class WeiBoUtil {
             logger.error("生成MD5失败", e);
             return null;
         }
+    }
+    public static String dateToString(Date time){
+        SimpleDateFormat formatter;
+        formatter = new SimpleDateFormat ("yyyy-MM-dd KK:mm:ss a");
+        String ctime = formatter.format(time);
+
+        return ctime;
     }
 }

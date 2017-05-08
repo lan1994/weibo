@@ -101,7 +101,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
     }
 
     private class ConsumerRunnable implements Runnable{
-        private  List<String> events = new ArrayList<>();
+        private  List<String> events = new ArrayList<String>();
         public ConsumerRunnable(){}
         private ConsumerRunnable(List<String> events) {
             this.events = events;

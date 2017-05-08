@@ -2800,27 +2800,6 @@ fieldset[disabled] .i-checks input + i:before {
   -webkit-animation: fadeOutDown 0.5s;
           animation: fadeOutDown 0.5s;
 }
-
-.bg-gd {
-  background-image: -webkit-gradient(linear, left 0, left 100%, from(rgba(40, 50, 60, 0)), to(rgba(40, 50, 60, 0.075)));
-  background-image: -webkit-linear-gradient(top, rgba(40, 50, 60, 0), 0, rgba(40, 50, 60, 0.075), 100%);
-  background-image: -moz-linear-gradient(top, rgba(40, 50, 60, 0) 0, rgba(40, 50, 60, 0.075) 100%);
-  background-image: linear-gradient(to bottom, rgba(40, 50, 60, 0) 0, rgba(40, 50, 60, 0.075) 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0028323c', endColorstr='#1328323c', GradientType=0);
-  filter: none;
-}
-
-.bg-gd-dk {
-  background-image: -webkit-gradient(linear, left 10%, left 100%, from(rgba(40, 50, 60, 0)), to(rgba(40, 50, 60, 0.5)));
-  background-image: -webkit-linear-gradient(top, rgba(40, 50, 60, 0), 10%, rgba(40, 50, 60, 0.5), 100%);
-  background-image: -moz-linear-gradient(top, rgba(40, 50, 60, 0) 10%, rgba(40, 50, 60, 0.5) 100%);
-  background-image: linear-gradient(to bottom, rgba(40, 50, 60, 0) 10%, rgba(40, 50, 60, 0.5) 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0028323c', endColorstr='#8028323c', GradientType=0);
-  filter: none;
-}
-
 .bg-white-opacity {
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -3934,19 +3913,6 @@ a.text-#000000:hover {
 .l-h-2x {
   line-height: 2em;
 }
-
-.l-s-1x {
-  letter-spacing: 1;
-}
-
-.l-s-2x {
-  letter-spacing: 2;
-}
-
-.l-s-3x {
-  letter-spacing: 3;
-}
-
 .font-normal {
   font-weight: normal;
 }
@@ -5290,350 +5256,13 @@ a.text-#000000:hover {
 .post-comment-form form {
   margin-top: 5px;
 }
-/*
 
-        Creating a sprite from following images:
-
-        app/assets/images/sprites/social-share-button/baidu.png (16x16)
-        app/assets/images/sprites/social-share-button/delicious.png (16x16)
-        app/assets/images/sprites/social-share-button/douban.png (16x16)
-        app/assets/images/sprites/social-share-button/email.png (16x16)
-        app/assets/images/sprites/social-share-button/facebook.png (16x16)
-        app/assets/images/sprites/social-share-button/flickr.png (16x16)
-        app/assets/images/sprites/social-share-button/google_bookmark.png (16x16)
-        app/assets/images/sprites/social-share-button/google_plus.png (16x16)
-        app/assets/images/sprites/social-share-button/kaixin001.png (16x16)
-        app/assets/images/sprites/social-share-button/pinterest.png (16x16)
-        app/assets/images/sprites/social-share-button/plurk.png (16x16)
-        app/assets/images/sprites/social-share-button/qq.png (16x16)
-        app/assets/images/sprites/social-share-button/renren.png (16x16)
-        app/assets/images/sprites/social-share-button/tqq.png (16x16)
-        app/assets/images/sprites/social-share-button/tumblr.png (16x16)
-        app/assets/images/sprites/social-share-button/twitter.png (16x16)
-        app/assets/images/sprites/social-share-button/weibo.png (16x16)
-
-        Output files:
-          app/assets/images/sprites/social-share-button.png
-          app/assets/stylesheets/social-share-button.scss
-
-        Output size:
-          80x64
-
-*/
-/* line 32, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-baidu {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") 0px 0px no-repeat;
-}
-
-/* line 33, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-delicious {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -16px 0px no-repeat;
-}
-
-/* line 34, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-douban {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") 0px -16px no-repeat;
-}
-
-/* line 35, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-email {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -16px -16px no-repeat;
-}
-
-/* line 36, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-facebook {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -32px 0px no-repeat;
-}
-
-/* line 37, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-flickr {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -32px -16px no-repeat;
-}
-
-/* line 38, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-google_bookmark {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") 0px -32px no-repeat;
-}
-
-/* line 39, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-google_plus {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -16px -32px no-repeat;
-}
-
-/* line 40, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-kaixin001 {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -32px -32px no-repeat;
-}
-
-/* line 41, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-pinterest {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -48px 0px no-repeat;
-}
-
-/* line 42, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-plurk {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -48px -16px no-repeat;
-}
-
-/* line 43, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-qq {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -48px -32px no-repeat;
-}
-
-/* line 44, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-renren {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") 0px -48px no-repeat;
-}
-
-/* line 45, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-tqq {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -16px -48px no-repeat;
-}
-
-/* line 46, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-tumblr {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -32px -48px no-repeat;
-}
-
-/* line 47, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-twitter {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -48px -48px no-repeat;
-}
-
-/* line 48, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-.social-share-button-weibo {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("/assets/sprites/social-share-button-94bb2793bde738d9183d02e0a09f6be5.png") -64px 0px no-repeat;
-}
-
-@media only screen and (-webkit-device-pixel-ratio: 2) {
-  /* line 51, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-baidu {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") 0px 0px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 52, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-delicious {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -16px 0px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 53, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-douban {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") 0px -16px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 54, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-email {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -16px -16px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 55, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-facebook {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -32px 0px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 56, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-flickr {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -32px -16px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 57, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-google_bookmark {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") 0px -32px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 58, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-google_plus {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -16px -32px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 59, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-kaixin001 {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -32px -32px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 60, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-pinterest {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -48px 0px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 61, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-plurk {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -48px -16px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 62, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-qq {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -48px -32px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 63, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-renren {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") 0px -48px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 64, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-tqq {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -16px -48px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 65, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-tumblr {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -32px -48px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 66, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-twitter {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -48px -48px no-repeat;
-    background-size: 80px 64px;
-  }
-
-  /* line 67, /usr/local/rvm/gems/ruby-2.1.2@v2.toutiao.io/gems/social-share-button-0.1.8/app/assets/stylesheets/social-share-button.scss */
-  .social-share-button-weibo {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url("/assets/sprites/social-share-button@2x-c85f2c6a69e041a5985e123eddb1845b.png") -64px 0px no-repeat;
-    background-size: 80px 64px;
-  }
-}
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
-
-
-
-
-
- */
-/* line 22, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 html {
   min-height: 100%;
   height: auto;
   position: relative;
   background-color: #FFF;
+  background-image: url(../images/img/shattered.png);
 }
 
 /* line 29, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
@@ -5659,7 +5288,7 @@ form {
 
 /* line 48, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 #main {
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 /* line 52, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
@@ -5714,19 +5343,7 @@ header.navbar {
   color: #FFF;
   box-shadow: 0px 1px 0px 0px rgba(83, 69, 64, 0.16), 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
 }
-/* line 100, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-header.navbar .navbar-brand {
-  display: inline-block;
-  height: 55px;
-  margin-left: 5px;
-  margin-top: 5px;
-  padding: 5px 5px 5px 60px;
-  background: url(/assets/logo-cf19f42eba7cd98c38a46a158aef1cd5.png) no-repeat 0 4px;
-  background-size: 46px 46px;
-  text-decoration: none;
-  color: #FFF;
-  opacity: 1;
-}
+
 /* line 112, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 header.navbar .navbar-brand:focus {
   color: #FFF;
@@ -5979,18 +5596,7 @@ header.navbar .navbar-toggle .icon-bar {
   padding: 5px 18px;
   background: rgba(0, 0, 0, 0.5);
 }
-/* line 303, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-#weixin-mask .open-tips h3 {
-  margin: 0;
-  padding: 0;
-  line-height: 60px;
-  background: transparent url(/assets/arrow-4b4e930397331b3f7af7fe1d5c311eb1.png) top right no-repeat;
-  -webkit-background-size: 60px;
-  -moz-background-size: 60px;
-  -o-background-size: 60px;
-  background-size: 60px;
-}
-/* line 315, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
+
 #weixin-mask .applogo {
   height: 60px;
   margin: 20px;
@@ -6072,14 +5678,6 @@ header.navbar .navbar-toggle .icon-bar {
   text-align: left;
 }
 
-/* line 392, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-.help-modal-footer span.logo {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background: url(/assets/logo-cf19f42eba7cd98c38a46a158aef1cd5.png) no-repeat;
-  vertical-align: middle;
-}
 /* line 399, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 .help-modal-footer .btn {
   margin-top: 10px;
@@ -6113,17 +5711,7 @@ header.navbar .navbar-toggle .icon-bar {
   margin-bottom: 30px;
   text-align: center;
 }
-/* line 431, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-.settings-page .user-avatar {
-  width: 80px;
-  height: 80px;
-  background: transparent url(/assets/avatar-2-alpha-d77a05e3e5a9f5e132f06561a8909f88.png) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  vertical-align: bottom;
-}
+
 /* line 442, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 .settings-page .avatar-field {
   display: inline-block;
@@ -6233,18 +5821,7 @@ header.navbar .navbar-toggle .icon-bar {
   text-align: center;
   color: #bdbdd1;
 }
-/* line 528, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-#quick-download .download-link {
-  display: block;
-  height: 50px;
-  margin-left: 30px;
-  padding: 5px 0 0 55px;
-  background: url(/assets/logo-blue-67e531bf6ddf8780eeaa252f03bebfeb.png) no-repeat left center;
-  background-size: 46px 46px;
-  text-decoration: none;
-  color: #666;
-  position: relative;
-}
+
 /* line 539, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 #quick-download .download-link h3 {
   margin: 3px 0 2px 0;
@@ -6339,18 +5916,7 @@ header.navbar .navbar-toggle .icon-bar {
   margin: 15px 0;
 }
 
-/* line 613, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
-.app-iphone {
-  float: right;
-  width: 364px;
-  height: 555px;
-  overflow: hidden;
-  padding-top: 83px;
-  padding-left: 22px;
-  background: url(../images/res/app-iphone-frame.png) no-repeat 0 0;
-  position: relative;
-  top: -25px;
-}
+
 /* line 624, /var/www/prod/v2.toutiao.io/app/assets/stylesheets/application.scss */
 .app-iphone .slide {
   width: 320px;
@@ -6757,9 +6323,14 @@ header.navbar .navbar-toggle .icon-bar {
     overflow: hidden;
     list-style: none;
 }
+.message_user_name{
+  width: 50px;
+  height: 90px;
+  float: left;
+}
 .letter-chat {
     background: #ECF1F1;
-    width: 820px;
+    width: 750px;
     max-width: 100%;
     padding: 20px 25px;
     text-align: left;
@@ -6819,7 +6390,8 @@ header.navbar .navbar-toggle .icon-bar {
     z-index: 99;
 }
 .letter-chatlist .my-reply .tooltip.right, .letter-chatlist .tooltip.right {
-    padding: 0;
+    padding-top: 15px;
+    padding-left: 20px;
     margin: 0;
 }
 .letter-chatlist .tooltip {
@@ -7382,8 +6954,9 @@ object:not([data]) {
     display:none
 }
 body.zhi {
-    padding-top:46px;
+    /*padding-top:46px;*/
     _padding-top:64px;
+    background-image: url(../images/img/shattered.png);
     -webkit-font-smoothing:subpixel-antialiased
 }
 html.in-app body.zhi {
@@ -7630,11 +7203,7 @@ address,sup {
 .zg-mb15 {
     margin:0 0 15px
 }
-.zg-locked {
-    background:transparent url(../images/img/lock.070c061d.gif) scroll no-repeat 0 5px;
-    color:#999;
-    padding:0 0 0 15px
-}
+
 .zu-autohide {
     display:none
 }
@@ -8030,12 +7599,25 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
 .zg-wrap {
     width:960px;
     margin:0 auto;
-    clear:both
+    /*clear:both*/
+}
+.footer{
+  padding-top: 30px;
+  width: 960px;
+  padding-bottom: 25px;
+  padding-top: 5px;
+  margin: 0 auto;
+  font-size: 12px;
+  font-style: italic;
+  padding-right: 10px;
 }
 .zu-main {
     min-height:340px;
-    padding:25px 0 50px;
+    padding-top: 25px;
     position:relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    background:#F3F3F4 ;
     z-index:2
 }
 .zu-main.no-sidebar .zu-main-content {
@@ -14997,11 +14579,12 @@ a>.invisible {
     cursor:default
 }
 .zu-top {
-    position:fixed;
+   /* position:fixed;*/
     top:0;
     left:0;
+    margin: 0 auto;
     z-index:20;
-    width:100%;
+    width:960px;
     height:45px;
     background:#3d444c;
     /*background:-webkit-linear-gradient(top,#086ed5,#055db5);

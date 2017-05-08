@@ -1,6 +1,6 @@
 #parse("header.html")
-<link rel="stylesheet" href="../styles/index.css">
-<link rel="stylesheet" href="../styles/detail.css">
+<link rel="stylesheet" href="/styles/index.css">
+<link rel="stylesheet" href="/styles/detail.css">
     <div class="zg-wrap zu-main clearfix " role="main">
         <div class="zm-profile-section-wrap zm-profile-followee-page">
             <!--
@@ -49,9 +49,6 @@
                 <div class="zg-section" id="zh-home-list-title">
                     <i class="zg-icon zg-icon-feedlist"></i>最新动态
                     <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
-                        <a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">
-                            <i class="zg-icon zg-icon-settings"></i>设置
-                        </a>
                     </span>
                 </div>
                 <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list">
@@ -62,7 +59,7 @@
                             <meta itemprop="ZReactor" data-id="389034" data-meta="">
                             <div class="feed-item-inner">
                                 <div class="avatar">
-                                    <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="https://nowcoder.com/people/amuro1230">
+                                    <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{user.id}">
                                         <img src="$!{vo.user.headUrl}" class="zm-item-img-avatar"></a>
                                 </div>
                                 <div class="feed-main">
@@ -70,7 +67,7 @@
                                         <meta itemprop="answer-id" content="389034">
                                         <meta itemprop="answer-url-token" content="13174385">
                                         <h2 class="feed-title">
-                                            <a class="question_link" target="_blank" href="/question/$!{vo.question.id}">$!{vo.question.title}</a></h2>
+                                            <a class="question_link" target="_blank" href="/question/$!{vo.question.id}/0">$!{vo.question.title}</a></h2>
                                         <div class="feed-question-detail-item">
                                             <div class="question-description-plain zm-editable-content"></div>
                                         </div>
@@ -96,6 +93,9 @@
                                                         <i class="z-icon-follow"></i>关注问题</a>
                                                     <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                                         <i class="z-icon-comment"></i>${vo.question.commentCount} 条评论</a>
+                                                    #if($vo.user.id==$user.id)
+                                                        &nbsp;<a class="answer-data-link meta-item" href="/question/delete?id=$!{vo.question.id}&userid=/user/$!{user.id}/1"><span>删除</span></a>
+                                                    #end
 
 
                                                     <button class="meta-item item-collapse js-collapse">
@@ -109,12 +109,34 @@
                             </div>
                         </div>
                         #end
+                        <ul class="pagination"> 
+                            <li> 
+                                #set($prev = $nextPage - 1) 
+                                <a href="/user/${userId}/${prev}">Prev</a> 
+                            </li> 
+                            #foreach($page in $pageDisplayArray) 
+                            #set($style="") 
+                            #if($nextPage == $page) 
+                            #set($style="style='color:grey'") 
+                            #end 
+                            <li> 
+                                <a href="/user/${userId}/$page" $style>$page</a> 
+                            </li> 
+                            #end 
+                            <li> 
+                                #set($next = $nextPage + 1) 
+                                <a href="/user/${userId}/${next}">Next</a> 
+                            </li> 
+                        </ul> 
                     </div>
-                    <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+                    <!--<a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>-->
                 </div>
             </div>
         </div>
+
+        #parse("js.html")
+        <script type="text/javascript" src="/scripts/main/site/profile.js"></script>
+        #parse("footer.html")
+
+
     </div>
-#parse("js.html")
-<script type="text/javascript" src="/scripts/main/site/profile.js"></script>
-#parse("footer.html")

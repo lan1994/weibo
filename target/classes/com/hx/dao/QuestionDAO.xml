@@ -17,4 +17,14 @@
         ORDER BY id DESC
         LIMIT #{offset},#{limit}
     </select>
+
+    <select id="getQuestionCount" resultType="int">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        <if test="userId != 0">
+            where user_id = #{userId}
+        </if>
+    </select>
 </mapper>
+
+

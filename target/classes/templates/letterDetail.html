@@ -1,12 +1,17 @@
 #parse("header.html")
-<link rel="stylesheet" media="all" href="../styles/letter.css">
+<link rel="stylesheet" media="all" href="/../styles/letter.css">
 <div id="main">
     <div class="zg-wrap zu-main clearfix ">
         <ul class="letter-chatlist">
-             #foreach($message in $messages)
+            #foreach($message in $messages)
             <li id="msg-item-4009580">
-                <a class="list-head">
-                    <img alt="头像" src="${message.user.headUrl}">
+                <a href="/user/$!{message.user.id}">
+                    <div class="message_user_name">
+                        <a class="list-head" href="/user/$!{message.user.id}">
+                            <img alt="头像" src="${message.user.headUrl}"><br>
+                        </a>
+                            &nbsp;&nbsp;&nbsp;$message.user.name
+                    </div>
                 </a>
                 <div class="tooltip fade right in">
                     <div class="tooltip-arrow"></div>
@@ -22,6 +27,25 @@
                 </div>
             </li>
             #end
+            <ul class="pagination">
+                <li>
+                    #set($prev = $nextPage - 1)
+                    <a href="/msg/detail/${prev}?conversationId=${conversationId}">Prev</a>
+                </li>
+                #foreach($page in $pageDisplayArray)
+                #set($style="")
+                #if($nextPage == $page)
+                #set($style="style='color:grey'")
+                #end
+                <li>
+                    <a href="/msg/detail/${page}?conversationId=${conversationId}" $style>$page</a>
+                </li>
+                #end
+                <li>
+                    #set($next = $nextPage + 1)
+                    <a href="/msg/detail/${next}?conversationId=${conversationId}">Next</a>
+                </li>
+            </ul>
         </ul>
 
     </div>

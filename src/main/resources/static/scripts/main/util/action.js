@@ -87,7 +87,7 @@
     }
 
     /**
-     * 关注问题
+     * 关注微博
      * @param   {Object} oConf
      *  @param  {String} oConf.questionId 问题id
      *  @param  {Function} oConf.call 成功回调
@@ -106,7 +106,7 @@
     }
 
     /**
-     * 取消关注问题
+     * 取消关注微博
      * @param   {Object} oConf
      *  @param  {String} oConf.questionId 问题id
      *  @param  {Function} oConf.call 成功回调

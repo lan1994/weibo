@@ -1,8 +1,12 @@
 #parse("header.html")
-<link rel="stylesheet" href="../styles/detail.css">
+<link rel="stylesheet" href="/../styles/detail.css">
 <div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question"
      id="zh-single-question-page" data-urltoken="36301524" role="main">
     <div class="zu-main-content">
+        <div class="avatar_user_imag">
+            <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="/user/$!{question.userId}">
+                <img src=$!{question.userImga} class="zm-item-img-avatar" style="height: 50px;width: 50px"></a>
+        </div>
         <div class="zu-main-content-inner">
             <meta itemprop="isTopQuestion" content="false">
             <meta itemprop="visitsCount" content="402">
@@ -38,7 +42,7 @@
                     </button>
                     #else
                     <button class="follow-button zg-follow zg-btn-green js-follow-question" data-id="${question.id}">
-                        关注问题
+                        关注微博
                     </button>
                     #end
                     <div class="zh-question-followers-sidebar">
@@ -69,7 +73,7 @@
 
                     <div class="zm-votebar goog-scrollfloater js-vote" data-id="$!{comment.comment.id}">
                         #if($comment.liked > 0)
-                        <button class="up js-like pressed" title="赞同">
+                        <button class="up js-like pressed" title="赞同"/>
                         #else
                         <button class="up js-like" title="赞同">
                         #end
@@ -79,7 +83,7 @@
                         </button>
 
                         #if($comment.liked < 0)
-                        <button class="down js-dislike pressed" title="反对，不会显示你的姓名">
+                        <button class="down js-dislike pressed" title="反对，不会显示你的姓名"/>
                         #else
                         <button class="down js-dislike" title="反对，不会显示你的姓名">
                         #end
@@ -89,9 +93,9 @@
                     </div>
                     <div class="answer-head">
                         <div class="zm-item-answer-author-info">
-                            <a class="zm-item-link-avatar avatar-link" href="" target="_blank" data-tip="p$t$yingxiaodao">
+                            <a class="zm-item-link-avatar avatar-link" href="/user/${comment.user.id}" target="_blank" data-tip="p$t$yingxiaodao">
                                 <img src="${comment.user.headUrl}" class="zm-list-avatar avatar"></a>
-                            <a class="author-link" data-tip="p$t$yingxiaodao" target="_blank" href="">${comment.user.name}</a>
+                            <a class="author-link" data-tip="p$t$yingxiaodao" target="_blank" href="/user/${comment.user.id}">$comment.user.name</a>
                         </div>
                         <div class="zm-item-vote-info">
                                 <span class="voters text">
@@ -109,12 +113,18 @@
                     <div class="zm-item-meta answer-actions clearfix js-contentActions">
                         <div class="zm-meta-panel">
                             <a itemprop="url" class="answer-data-link meta-item" target="_blank" href="">发布于 $data.format('yyyy-MM-dd HH:mm:ss', $comment.comment.createdDate)</a>
-                            <a href="" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
-                                <i class="z-icon-comment"></i></a>
-
-                            <button class="item-collapse js-collapse" style="transition: none;">
-                                <i class="z-icon-fold"></i>收起</button>
+                            &nbsp;&nbsp;<a href="javascript:;" onclick="commentTo('回复${comment.user.name}','$!{question.id}','${comment.comment.id}','${comment.user.id}')" >回复</a>&nbsp;&nbsp;
+                            #if($comment.user.id==$user.id)
+                                <a href="javascript:;" id="edit_comment" onclick="editComment('${comment.comment.content}','$!{question.id}','$!{comment.comment.id}')"><span>编辑</span></a>&nbsp;&nbsp;<a class="answer-data-link meta-item" href="/deleteComment?commentId=$!{comment.comment.id}&questionId=$!{question.id}&child=false&parentId=0"><span>删除</span></a>
+                            #end
+                            <a href="javascript:;" onclick="commentToComment(this,'$!{comment.comment.id}','$!{question.id}')"><span class="commentNum">$comment.comment.count条回复</span></a>
                         </div>
+                    </div>
+                    <div class="Comment-comment">
+                        <div id="Usercommentss" style="width: auto;height: auto;"></div>
+                        #if($comment.comment.count>0)
+                            <div class="commentHidden" onclick="hiddenDiv(this)"><a href="javascript:;">收起</a></div>
+                        #end
                     </div>
                 </div>
                 #end
@@ -123,7 +133,28 @@
 
             <form action="/addComment" method="post">
                 <input type="hidden" name="questionId" value="$!{question.id}"/>
+                <input type="hidden" name="parentId" value="0"/>
+                <input type="hidden" name="toUserId" value="0"/>
             <div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+                <ul class="pagination">
+                    <li>
+                        #set($prev = $nextPage - 1)
+                        <a href="/question/$!{question.id}/${prev}">Prev</a>
+                    </li>
+                    #foreach($page in $pageDisplayArray)
+                    #set($style="")
+                    #if($nextPage == $page)
+                    #set($style="style='color:grey'")
+                    #end
+                    <li>
+                        <a href="/question/$!{question.id}/$page" $style>$page</a>
+                    </li>
+                    #end
+                    <li>
+                        #set($next = $nextPage + 1)
+                        <a href="/question/$!{question.id}/${next}">Next</a>
+                    </li>
+                </ul>
                 <div class="zm-editable-editor-wrap" style="">
                     <div class="zm-editable-editor-outer">
                         <div class="zm-editable-editor-field-wrap">
@@ -138,10 +169,94 @@
                 </div>
             </div>
             </form>
-
         </div>
     </div>
 </div>
 #parse("js.html")
 <script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+<script type="text/javascript" src="/scripts/dialog-plus.js"></script>
 #parse("footer.html")
+<script type="text/javascript">
+    function editComment(comment,questionid,commentid){
+        var d = dialog({
+            title: '编辑',
+            content: '<div class="zm-editable-editor-outer">'+
+            '<div class="zm-editable-editor-field-wrap">'+
+            '<textarea name="content" id="comment" class="zm-editable-editor-field-element editable" style="width:100%;">'+comment+'</textarea>'+
+            '</div>'+
+            '</div>',
+            okValue: '确定',
+            ok: function () {
+                this.title('提交中…');
+                $.ajax({url:"/editComment?content="+$('#comment').val()+"&questionId="+questionid+"&commentId="+commentid+"",
+                    async:false,
+                    success: function(){
+                        window.location.reload();
+                    }
+                }),
+                d.remove();
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        });
+        d.width(500);
+        d.showModal();
+    }
+
+    function commentTo(comment ,questionid,parentId,commentUserId){
+        var d = dialog({
+            title: '回复',
+            content: '<div class="zm-editable-editor-outer">'+
+            '<div class="zm-editable-editor-field-wrap">'+
+            '<textarea placeholder="'+comment+'" id="commentTo" class="zm-editable-editor-field-element editable" style="width:100%;"></textarea>'+
+            '</div>'+
+            '</div>',
+            okValue: '确定',
+            ok: function () {
+                this.title('提交中…');
+                $.ajax({url:"/addComment?content="+$('#commentTo').val()+"&questionId="+questionid+"&parentId="+parentId+"&toUserId="+commentUserId+"",
+                    async:false,
+                    success: function(){
+                        window.location.reload();
+                    }
+                }),
+                d.remove();
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        });
+        d.width(500);
+        d.showModal();
+    }
+
+    function commentToComment(obj,commentId,qid) {
+        var divContent = obj.parentNode.parentNode.nextSibling.nextSibling;
+        divContent.style.display = "block";
+        var ChildDiv = obj.parentNode.parentNode.nextSibling.nextSibling.childNodes[1];
+        ChildDiv.innerHTML = "";
+        $.ajax(
+            {
+                url:"/getComment?commentId="+commentId+"&questionId="+qid+"",
+                type:"post",
+                success: function(data){
+                    var jsonObj = eval( '(' + data + ')' );
+                    $.each(jsonObj, function() {
+                        ChildDiv.innerHTML += "<div><div class='comments-comments'> &nbsp;<a href='/user/"+this.userId+"'>"+this.username+"</a> 回复了 <a href='/user/"+this.toUserId+"'>"+this.tousername +"</a>&nbsp;："+ this.content +
+                            "</br><span class='answer-data-link meta-item' >发布于 "+this.createdDate+"&nbsp;&nbsp;</span></div>";
+                            if(this.userId==$user.id){
+                                ChildDiv.innerHTML+= "<div class='delete-comment'><a href='javascript:;' onclick=commentTo('回复"+this.username+"','"+qid+"','"+commentId+"','"+this.userId+"')>回复</a>" +
+                                    "&nbsp;&nbsp;<a href='/deleteComment?commentId="+this.id+"&questionId="+qid+"&child=true&parentId="+commentId+"' >删除</a></div>";
+                            }else{
+                                ChildDiv.innerHTML+= "<div class='delete-comment'><a href='javascript:;' onclick=commentTo('回复"+this.username+"','"+qid+"','"+commentId+"','"+this.userId+"')>回复</a></div>";
+                            }
+                        ChildDiv.innerHTML +="</div>"
+                    });
+            }
+        });
+    }
+
+    function hiddenDiv(obj) {
+        obj.parentNode.style.display = "none";
+    }
+
+</script>
